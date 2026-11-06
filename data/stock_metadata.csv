@@ -1,0 +1,9 @@
+osid,ticker,sector,sector_group,style_group
+1001,MOCK1001,Technology,1,1
+1002,MOCK1002,Healthcare,2,0
+1003,MOCK1003,Financials,3,1
+1004,MOCK1004,Consumer,4,0
+1005,MOCK1005,Energy,5,1
+1006,MOCK1006,Industrials,6,0
+1007,MOCK1007,Technology,1,1
+1008,MOCK1008,Healthcare,2,0

@@ -1,0 +1,103 @@
+{
+  "n_events": 78,
+  "n_evaluated": 72,
+  "n_skipped": 6,
+  "fwd_return_5d": {
+    "mean": -0.011516892667239974,
+    "median": -0.029709095350950898,
+    "positive_share": 0.4305555555555556
+  },
+  "bench_return_5d": {
+    "mean": 2.0174408403894925e-05,
+    "median": 0.0005489566203419338,
+    "positive_share": 0.5416666666666666
+  },
+  "alpha_5d": {
+    "mean": -0.01153706707564387,
+    "median": -0.02872444873903468,
+    "positive_share": 0.4305555555555556
+  },
+  "event_effectiveness": 0.4305555555555556,
+  "by_sector_group": [
+    {
+      "sector_group": 1,
+      "sectors": [
+        "Technology"
+      ],
+      "n_evaluated": 44,
+      "mean_fwd_return_5d": 0.01843062585468441,
+      "median_fwd_return_5d": 0.04581695984333822,
+      "mean_alpha_5d": 0.017303784151024917,
+      "median_alpha_5d": 0.03674192302667867,
+      "effectiveness": 0.7045454545454546
+    },
+    {
+      "sector_group": 2,
+      "sectors": [
+        "Healthcare"
+      ],
+      "n_evaluated": 7,
+      "mean_fwd_return_5d": -0.058577432294336686,
+      "median_fwd_return_5d": -0.05857756706040196,
+      "mean_alpha_5d": -0.06119862713546948,
+      "median_alpha_5d": -0.05958717166503613,
+      "effectiveness": 0.0
+    },
+    {
+      "sector_group": 3,
+      "sectors": [
+        "Financials"
+      ],
+      "n_evaluated": 6,
+      "mean_fwd_return_5d": -0.05857724286537765,
+      "median_fwd_return_5d": -0.05857716696729037,
+      "mean_alpha_5d": -0.052410179450194196,
+      "median_alpha_5d": -0.052028513206234805,
+      "effectiveness": 0.0
+    },
+    {
+      "sector_group": 4,
+      "sectors": [
+        "Consumer"
+      ],
+      "n_evaluated": 3,
+      "mean_fwd_return_5d": -0.058577296920685806,
+      "median_fwd_return_5d": -0.058577462574079364,
+      "mean_alpha_5d": -0.05885549219498554,
+      "median_alpha_5d": -0.060012953100509026,
+      "effectiveness": 0.0
+    },
+    {
+      "sector_group": 5,
+      "sectors": [
+        "Energy"
+      ],
+      "n_evaluated": 7,
+      "mean_fwd_return_5d": -0.05857700154916658,
+      "median_fwd_return_5d": -0.058576981615754864,
+      "mean_alpha_5d": -0.058561345945219015,
+      "median_alpha_5d": -0.06066328782262198,
+      "effectiveness": 0.0
+    },
+    {
+      "sector_group": 6,
+      "sectors": [
+        "Industrials"
+      ],
+      "n_evaluated": 5,
+      "mean_fwd_return_5d": -0.05857748495770918,
+      "median_fwd_return_5d": -0.0585774186918927,
+      "mean_alpha_5d": -0.052537593448102715,
+      "median_alpha_5d": -0.05637455541476466,
+      "effectiveness": 0.0
+    }
+  ],
+  "definitions": {
+    "event": "7-day price slope < 0 and 7-day OBV slope > 0; every such day is an event",
+    "fwd_return_5d": "close[t+5] / close[t] - 1 on the same osid trading calendar",
+    "bench_return_5d": "bench_close[t+5] / bench_close[t] - 1 on the same dates",
+    "alpha_5d": "fwd_return_5d - bench_return_5d",
+    "event_effectiveness": "share of evaluated events with alpha_5d > 0",
+    "skipped": "events with fewer than 5 subsequent trading days; omitted from event_returns"
+  }
+}
