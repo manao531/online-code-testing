@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>challenge_requirements.pdf</title>
+  <style>
+    body { margin: 0; background: #525659; color: #fff; font-family: sans-serif; }
+    #status { padding: 12px 16px; }
+    canvas { display: block; margin: 12px auto; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.4); }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+  <div id="status">Loading challenge_requirements.pdf…</div>
+  <div id="viewer"></div>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    const status = document.getElementById("status");
+    pdfjsLib.getDocument("challenge_requirements.pdf").promise.then(async (pdf) => {
+      status.textContent = "Pages: " + pdf.numPages;
+      const viewer = document.getElementById("viewer");
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const viewport = page.getViewport({ scale: 1.4 });
+        const canvas = document.createElement("canvas");
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        canvas.dataset.page = String(i);
+        viewer.appendChild(canvas);
+        await page.render({ canvasContext: canvas.getContext("2d"), viewport }).promise;
+      }
+      status.textContent = "Showing " + pdf.numPages + " pages of challenge_requirements.pdf";
+    }).catch((err) => {
+      status.textContent = "Failed to render PDF: " + err;
+    });
+  </script>
+</body>
+</html>
